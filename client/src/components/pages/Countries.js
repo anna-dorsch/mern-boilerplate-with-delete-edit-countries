@@ -34,6 +34,7 @@ class Countries extends Component {
             <tr>
               <th>Name</th>
               <th>Capitals</th>
+              <th>Owner</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -42,9 +43,10 @@ class Countries extends Component {
               <tr key={c._id}>
                 <td>{c.name}</td>
                 <td>{c.capitals}</td>
+                <td>{c._owner.username}</td>
                 <td>
-                  <button onClick={() => this.handleEdit(c._id)}>Edit</button>
-                  <button onClick={() => this.handleDelete(c._id)}>Delete</button>
+                  {api.isLoggedIn() && <button onClick={() => this.handleEdit(c._id)}>Edit</button>}
+                  {api.isLoggedIn() && <button onClick={() => this.handleDelete(c._id)}>Delete</button>}
                 </td>
               </tr>
             ))}
