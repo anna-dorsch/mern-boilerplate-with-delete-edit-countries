@@ -60,6 +60,20 @@ export default {
       .catch(errHandler)
   },
 
+  getCountryDetail(id) {
+    return service
+      .get('/countries/'+id)
+      .then(res => res.data)
+      .catch(errHandler)
+  },
+
+  updateCountry(id, body) {
+    return service
+      .put('/countries/'+id, body)
+      .then(res => res.data)
+      .catch(errHandler)
+  },
+
   postCountries(data) {
     return service
       .post('/countries', data)

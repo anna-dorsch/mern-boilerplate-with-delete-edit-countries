@@ -21,6 +21,10 @@ class Countries extends Component {
       console.log("ERROR", err);
     })
   }
+  handleEdit(idClicked) {
+    // Redirects the user to '/edit-country/'+idClicked
+    this.props.history.push('/edit-country/'+idClicked)
+  }
   render() {
     return (
       <div className="Countries">
@@ -39,7 +43,7 @@ class Countries extends Component {
                 <td>{c.name}</td>
                 <td>{c.capitals}</td>
                 <td>
-                  <button>Edit (iteration 2)</button>
+                  <button onClick={() => this.handleEdit(c._id)}>Edit</button>
                   <button onClick={() => this.handleDelete(c._id)}>Delete</button>
                 </td>
               </tr>
