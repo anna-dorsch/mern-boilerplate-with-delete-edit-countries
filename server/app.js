@@ -12,6 +12,7 @@ const session = require("express-session")
 const MongoStore = require('connect-mongo')(session)
 
 require('./configs/database')
+require('./configs/cloudinary')
 
 const app_name = require('./package.json').name
 const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.')[0]}`)
@@ -51,6 +52,7 @@ require('./passport')(app)
 app.use('/api', require('./routes/index'))
 app.use('/api', require('./routes/auth'))
 app.use('/api/countries', require('./routes/countries'))
+app.use('/api/users', require('./routes/users'))
 
 // For any routes that starts with "/api", catch 404 and forward to error handler
 app.use('/api/*', (req, res, next) => {

@@ -95,13 +95,20 @@ export default {
       .catch(errHandler)
   },
 
-
+  getProfile() {
+    return service
+      .get('/users/profile')
+      .then(res => res.data)
+      .catch(errHandler)
+  },
 
   addPicture(file) {
-    const formData = new FormData()
+    const formData = new FormData();
     formData.append("picture", file)
+    // formData.append("firstname", 'Maxence')
+    console.log('DEBUG formData', formData.get("picture"));
     return service
-      .post('/endpoint/to/add/a/picture', formData, {
+      .post('/users/pictures', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -109,4 +116,19 @@ export default {
       .then(res => res.data)
       .catch(errHandler)
   },
+
+
+
+  // addPicture(file) {
+  //   const formData = new FormData()
+  //   formData.append("picture", file)
+  //   return service
+  //     .post('/endpoint/to/add/a/picture', formData, {
+  //       headers: {
+  //         'Content-Type': 'multipart/form-data',
+  //       },
+  //     })
+  //     .then(res => res.data)
+  //     .catch(errHandler)
+  // },
 }

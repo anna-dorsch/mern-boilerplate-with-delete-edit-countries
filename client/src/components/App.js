@@ -5,6 +5,7 @@ import Countries from './pages/Countries';
 import AddCountry from './pages/AddCountry';
 import EditCountry from './pages/EditCountry';
 import Secret from './pages/Secret';
+import Profile from './pages/Profile';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import api from '../api';
@@ -34,6 +35,7 @@ class App extends Component {
           <NavLink to="/add-country">Add country</NavLink>
           {!api.isLoggedIn() && <NavLink to="/signup">Signup</NavLink>}
           {!api.isLoggedIn() && <NavLink to="/login">Login</NavLink>}
+          {api.isLoggedIn() && <Link to="/profile">Profile</Link>}
           {api.isLoggedIn() && <Link to="/" onClick={(e) => this.handleLogoutClick(e)}>Logout</Link>}
           <NavLink to="/secret">Secret</NavLink>
         </header>
@@ -44,6 +46,7 @@ class App extends Component {
           <Route path="/edit-country/:id" component={EditCountry} />
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />
+          <Route path="/profile" component={Profile} />
           <Route path="/secret" component={Secret} />
           <Route render={() => <h2>404</h2>} />
         </Switch>
